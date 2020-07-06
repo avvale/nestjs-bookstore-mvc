@@ -5,7 +5,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Reader } from './reader/reader.model';
 import { Author } from './author/author.model';
 import { Book } from './book/book.model';
-import { ReadersBooks } from './reader/readers-books.model';
+import { BooksReaders } from './book/books-readers.model';
 
 // services
 import { AuthorService } from './author/author.service';
@@ -23,7 +23,7 @@ import { ReaderController } from './reader/reader.controller';
             Author, 
             Book,
             Reader,
-            ReadersBooks
+            BooksReaders
         ])
     ],
     providers: [

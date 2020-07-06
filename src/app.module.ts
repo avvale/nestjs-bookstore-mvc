@@ -10,7 +10,7 @@ import { BookstoreModule } from './bookstore/bookstore.module';
             port: 33001,
             username: 'root',
             password: '123456',
-            database: 'sequelize-test',
+            database: 'bookstore-mvc',
             autoLoadModels: true,
             synchronize: true,
         }),

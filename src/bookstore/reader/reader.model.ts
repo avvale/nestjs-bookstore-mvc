@@ -1,6 +1,6 @@
 import { Column, Model, Table, BelongsToMany } from 'sequelize-typescript';
 import { Book } from '../book/book.model';
-import { ReadersBooks } from './readers-books.model';
+import { BooksReaders } from './../book/books-readers.model';
 import { DataTypes } from 'sequelize';
 
 @Table({ modelName: 'reader', freezeTableName: true, updatedAt: 'updated_at', createdAt: 'created_at' })
@@ -17,6 +17,6 @@ export class Reader extends Model<Reader>
     @Column
     name: string;
 
-    @BelongsToMany(() => Book, () => ReadersBooks)
+    @BelongsToMany(() => Book, () => BooksReaders)
     books: Book[];
 }

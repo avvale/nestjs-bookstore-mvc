@@ -13,7 +13,7 @@ export class AuthorService
         private readonly authorModel: typeof Author
     ) { }
 
-    create(createAuthorDto: CreateAuthorDto): Promise<Author> 
+    async create(createAuthorDto: CreateAuthorDto): Promise<Author> 
     {
         const author      = new Author();
         author.id         = uuidv4();
@@ -29,7 +29,7 @@ export class AuthorService
         });
     }
 
-    findOne(id: string): Promise<Author> 
+    async findOne(id: string): Promise<Author> 
     {
         return this.authorModel.findOne({
             where: {

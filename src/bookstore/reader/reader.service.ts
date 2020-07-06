@@ -31,7 +31,7 @@ export class ReaderService
         });
     }
 
-    findOne(id: string): Promise<Reader> 
+    async findOne(id: string): Promise<Reader> 
     {
         return this.readerModel.findOne({
             where: {

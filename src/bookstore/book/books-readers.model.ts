@@ -1,10 +1,10 @@
 import { Column, Model, Table, ForeignKey } from 'sequelize-typescript';
-import { Reader } from './reader.model';
-import { Book } from '../book/book.model';
+import { Reader } from '../reader/reader.model';
+import { Book } from './book.model';
 import { DataTypes } from 'sequelize';
 
-@Table({ modelName: 'readers_books', freezeTableName: true, updatedAt: 'updated_at', createdAt: 'created_at' })
-export class ReadersBooks extends Model<Reader> 
+@Table({ modelName: 'books_readers', freezeTableName: true, updatedAt: 'updated_at', createdAt: 'created_at' })
+export class BooksReaders extends Model<Reader> 
 {
     @ForeignKey(() => Reader)
     @Column({

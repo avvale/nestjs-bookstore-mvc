@@ -10,7 +10,7 @@ export class BookService
         private readonly bookRepository: IBookRepository
     ) { }
 
-    create(createBookDto: CreateBookDto): Promise<Book> 
+    async create(createBookDto: CreateBookDto): Promise<Book> 
     {
         return this.bookRepository.create(createBookDto);
     }
@@ -20,7 +20,7 @@ export class BookService
         return this.bookRepository.findAll();
     }
 
-    findOne(id: string): Promise<Book> 
+    async findOne(id: string): Promise<Book> 
     {
         return this.bookRepository.findOne(id);
     }

@@ -1,48 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { v4 as uuidv4 } from 'uuid';
 import { Book } from './book.model';
-import { Author } from './../author/author.model';
 import { CreateBookDto } from './dto/create-book.dto';
+import { IBookRepository } from './book.repository';
 
 @Injectable()
 export class BookService 
 {
     constructor(
-        @InjectModel(Book)
-        private readonly bookModel: typeof Book
+        private readonly bookRepository: IBookRepository
     ) { }
 
     create(createBookDto: CreateBookDto): Promise<Book> 
     {
-        const book      = new Book();
-        book.id         = uuidv4();
-        book.authorId   = createBookDto.authorId;
-        book.name       = createBookDto.name;
-
-        return book.save();
+        return this.bookRepository.create(createBookDto);
     }
 
     async findAll(): Promise<Book[]> 
     {    
-        return this.bookModel.findAll({
-            include: [Author]
-        });
+        return this.bookRepository.findAll();
     }
 
     findOne(id: string): Promise<Book> 
     {
-        return this.bookModel.findOne({
-            where: {
-                id
-            },
-            include: [Author]
-        });
+        return this.bookRepository.findOne(id);
     }
 
     async remove(id: string): Promise<void> 
     {
-        const user = await this.findOne(id);
-        await user.destroy();
+        return this.bookRepository.remove(id);
     }
 }

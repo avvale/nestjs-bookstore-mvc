@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { BookstoreModule } from './bookstore/bookstore.module';
 
@@ -16,5 +18,7 @@ import { BookstoreModule } from './bookstore/bookstore.module';
         }),
         BookstoreModule,
     ],
+    controllers: [AppController],
+    providers: [AppService]
 })
 export class AppModule { }

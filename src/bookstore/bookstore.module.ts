@@ -17,6 +17,10 @@ import { AuthorController } from './author/author.controller';
 import { BookController } from './book/book.controller';
 import { ReaderController } from './reader/reader.controller';
 
+// implementations
+import { IBookRepository } from './book/book.repository';
+import { SequelizeBookRepository } from './book/sequelize-book.repository';
+
 @Module({
     imports: [
         SequelizeModule.forFeature([
@@ -29,7 +33,11 @@ import { ReaderController } from './reader/reader.controller';
     providers: [
         AuthorService, 
         BookService,
-        ReaderService
+        ReaderService,
+        {
+            provide: IBookRepository,
+            useClass: SequelizeBookRepository
+        }
     ],
     controllers: [
         AuthorController,
